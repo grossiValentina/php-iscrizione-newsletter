@@ -22,9 +22,14 @@
             <div class='alert alert-danger'>La mail non è corretta</div>
         <?php } ?>
 
+        <?php session_start() ?>
         <!-- condizione per emeil giusta e alert-success  -->
         <?php if (isset($_GET["email"]) && filter_email($email)) { ?>
-            <div class='alert alert-success'>La mail è corretta</div>
+            <!-- <div class='alert alert-success'>La mail è corretta</div> -->
+            <?php
+            $_SESSION["email"] = $email;
+            header("Location: thankyou.php");
+             ?>
         <?php } ?>
 
         <!-- form email -->
@@ -39,4 +44,4 @@
     </div>
 </body>
 
-</html >
+</html>
